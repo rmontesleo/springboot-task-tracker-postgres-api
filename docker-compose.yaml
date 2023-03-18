@@ -1,15 +1,22 @@
 version: '3.7'
 
 services: 
-  db:
-    image: 'mysql:8.0.22'
-    container_name: mysqldb
+  postgres:
+    image: 'postgres:11'
+    container_name: postgres
     ports: 
-      - "3306:3306"
-      
+      - "5432:5432"
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - 9090:80
+          
 volumes: 
-  springboot-task-tracker-mysql-api-volume:
+  springboot-task-tracker-postgres-api-db-volume:
+  springboot-task-tracker-postgres-api-pgadmin-volume:
 
 networks:
   default:
-    name: springboot-task-tracker-mysql-api-network
+    name: springboot-task-tracker-postgres-api-network
